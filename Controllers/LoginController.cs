@@ -4,16 +4,30 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using TCallingManegment.Models;
 namespace TCallingManegment.Controllers
 {
     public class LoginController : Controller
     {
-        public ActionResult Login()
+        public ActionResult LoginPage()
         {
             return View();
         }
 
+        public ActionResult RegisterPage()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult RegisterUser(UserMaster user)
+        {
+            return RedirectToAction("LoginPage", "Login");
+        }
+        [HttpPost]
+        public ActionResult LoginUser(UserMaster user)
+        {
+            return RedirectToAction("Index", "Home");
+        }
         [HttpPost]
         public ActionResult Authorize(UserMaster userModel)
         {
@@ -42,7 +56,7 @@ namespace TCallingManegment.Controllers
         public ActionResult Logout()
         {
             Session.Abandon();
-            return RedirectToAction("Index", "Login");
+            return RedirectToAction("LoginPage", "Login");
         }
     }
 }

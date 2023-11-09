@@ -64,7 +64,7 @@ namespace TCallingManegment.Controllers
             }
             if (dtblUser.Rows.Count == 1)
             {
-                userMaster.UserID = Convert.ToInt32(dtblUser.Rows[0][0].ToString());
+              //  userMaster.UserID = Convert.ToInt32(dtblUser.Rows[0][0].ToString());
                 userMaster.UserName = dtblUser.Rows[0][1].ToString();
                 // Set other properties...
                 return View(userMaster);
